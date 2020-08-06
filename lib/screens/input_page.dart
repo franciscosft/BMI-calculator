@@ -1,10 +1,12 @@
-import 'package:bmi_calculator/result_page.dart';
+import 'package:bmi_calculator/components/bottonbutton.dart';
+import 'package:bmi_calculator/components/content_card.dart';
+import 'package:bmi_calculator/components/reusable_card.dart';
+import 'package:bmi_calculator/components/round_icon_button.dart';
+import 'package:bmi_calculator/screens/result_page.dart';
+import 'package:bmi_calculator/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'reusable_card.dart';
-import 'content_card.dart';
-import 'constants.dart';
 
 class InputPage extends StatefulWidget {
   @override
@@ -206,45 +208,14 @@ class _InputPageState extends State<InputPage> {
           ),
         ],
       )),
-      GestureDetector(
+      BottomButton(
         onTap: () {
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => ResultPage()));
         },
-        child: Container(
-          child: Text(
-            "Calculate",
-            style: kLabelHightTextStyle,
-          ),
-          color: kColorContainerBottom,
-          margin: EdgeInsets.only(top: 10.0),
-          width: double.infinity,
-          height: kHeighContainer,
-        ),
-      ),
+        buttonTitle: "CALCULATE",
+      )
     ]);
-  }
-}
-
-class RoundIconButton extends StatelessWidget {
-  RoundIconButton({@required this.icon, this.onPress});
-
-  final IconData icon;
-  final Function onPress;
-
-  @override
-  Widget build(BuildContext context) {
-    return RawMaterialButton(
-      child: Icon(icon),
-      shape: CircleBorder(),
-      fillColor: Color(0xFF4C4F5E),
-      elevation: 6.0,
-      constraints: BoxConstraints.tightFor(
-        width: 50.0,
-        height: 50.0,
-      ),
-      onPressed: onPress,
-    );
   }
 }
 
